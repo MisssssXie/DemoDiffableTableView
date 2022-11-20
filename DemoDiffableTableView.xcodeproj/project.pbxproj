@@ -9,21 +9,27 @@
 /* Begin PBXBuildFile section */
 		361A3162292A040B003B7ED8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361A3161292A040B003B7ED8 /* AppDelegate.swift */; };
 		361A3164292A040B003B7ED8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361A3163292A040B003B7ED8 /* SceneDelegate.swift */; };
-		361A3166292A040B003B7ED8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361A3165292A040B003B7ED8 /* ViewController.swift */; };
+		361A3166292A040B003B7ED8 /* PushNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361A3165292A040B003B7ED8 /* PushNotificationViewController.swift */; };
 		361A3169292A040B003B7ED8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 361A3167292A040B003B7ED8 /* Main.storyboard */; };
 		361A316B292A040C003B7ED8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 361A316A292A040C003B7ED8 /* Assets.xcassets */; };
 		361A316E292A040C003B7ED8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 361A316C292A040C003B7ED8 /* LaunchScreen.storyboard */; };
+		361A317A292A07FD003B7ED8 /* NotificationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361A3179292A07FD003B7ED8 /* NotificationInfo.swift */; };
+		361A317C292A087B003B7ED8 /* PushNotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361A317B292A087B003B7ED8 /* PushNotificationViewModel.swift */; };
+		361A317F292A0AC2003B7ED8 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361A317E292A0AC2003B7ED8 /* NotificationCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		361A315E292A040B003B7ED8 /* DemoDiffableTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoDiffableTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		361A3161292A040B003B7ED8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		361A3163292A040B003B7ED8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		361A3165292A040B003B7ED8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		361A3165292A040B003B7ED8 /* PushNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationViewController.swift; sourceTree = "<group>"; };
 		361A3168292A040B003B7ED8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		361A316A292A040C003B7ED8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		361A316D292A040C003B7ED8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		361A316F292A040C003B7ED8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		361A3179292A07FD003B7ED8 /* NotificationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationInfo.swift; sourceTree = "<group>"; };
+		361A317B292A087B003B7ED8 /* PushNotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationViewModel.swift; sourceTree = "<group>"; };
+		361A317E292A0AC2003B7ED8 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +62,58 @@
 		361A3160292A040B003B7ED8 /* DemoDiffableTableView */ = {
 			isa = PBXGroup;
 			children = (
+				361A3175292A077C003B7ED8 /* PushNotification */,
 				361A3161292A040B003B7ED8 /* AppDelegate.swift */,
 				361A3163292A040B003B7ED8 /* SceneDelegate.swift */,
-				361A3165292A040B003B7ED8 /* ViewController.swift */,
 				361A3167292A040B003B7ED8 /* Main.storyboard */,
 				361A316A292A040C003B7ED8 /* Assets.xcassets */,
 				361A316C292A040C003B7ED8 /* LaunchScreen.storyboard */,
 				361A316F292A040C003B7ED8 /* Info.plist */,
 			);
 			path = DemoDiffableTableView;
+			sourceTree = "<group>";
+		};
+		361A3175292A077C003B7ED8 /* PushNotification */ = {
+			isa = PBXGroup;
+			children = (
+				361A3178292A07E3003B7ED8 /* Model */,
+				361A3177292A078A003B7ED8 /* ViewModel */,
+				361A3176292A0783003B7ED8 /* VC */,
+				361A317D292A0A93003B7ED8 /* View */,
+			);
+			path = PushNotification;
+			sourceTree = "<group>";
+		};
+		361A3176292A0783003B7ED8 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				361A3165292A040B003B7ED8 /* PushNotificationViewController.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		361A3177292A078A003B7ED8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				361A317B292A087B003B7ED8 /* PushNotificationViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		361A3178292A07E3003B7ED8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				361A3179292A07FD003B7ED8 /* NotificationInfo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		361A317D292A0A93003B7ED8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				361A317E292A0AC2003B7ED8 /* NotificationCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +187,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				361A3166292A040B003B7ED8 /* ViewController.swift in Sources */,
+				361A317A292A07FD003B7ED8 /* NotificationInfo.swift in Sources */,
+				361A317C292A087B003B7ED8 /* PushNotificationViewModel.swift in Sources */,
+				361A3166292A040B003B7ED8 /* PushNotificationViewController.swift in Sources */,
 				361A3162292A040B003B7ED8 /* AppDelegate.swift in Sources */,
+				361A317F292A0AC2003B7ED8 /* NotificationCell.swift in Sources */,
 				361A3164292A040B003B7ED8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
