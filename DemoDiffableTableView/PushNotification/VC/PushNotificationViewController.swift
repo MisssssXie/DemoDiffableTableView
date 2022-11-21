@@ -20,7 +20,6 @@ class PushNotificationViewController: UIViewController {
     
     var dataSource: UITableViewDiffableDataSource<String, NotificationInfo>?
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -46,8 +45,7 @@ class PushNotificationViewController: UIViewController {
         tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
 
-    
-    
+    /// 設定DataSource與Cell
     private func setupDataSource() {
      
         dataSource = UITableViewDiffableDataSource<String, NotificationInfo>(tableView: tableView, cellProvider: {(tableView, indexPath, model) -> UITableViewCell? in
@@ -62,9 +60,13 @@ class PushNotificationViewController: UIViewController {
     
     private func apply() {
         var snapshot = NSDiffableDataSourceSnapshot<String, NotificationInfo>()
+        
+        // 設定快照內的section
         snapshot.appendSections(self.viewModel.getSections())
         self.viewModel.getSections().forEach { key in
             guard let model = viewModel.getModels(at: key) else {return}
+            
+            // 設定每個section內的row
             snapshot.appendItems(model, toSection: key)
         }
         self.dataSource?.apply(snapshot, animatingDifferences: true)
@@ -79,6 +81,7 @@ class PushNotificationViewController: UIViewController {
     }
 }
 
+/// iOS 13的Section view要用原始的UITableViewDelegate串接
 extension PushNotificationViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40.0
@@ -100,6 +103,7 @@ extension PushNotificationViewController: UITableViewDelegate {
     }
 }
 
+/// dataSource抓取成功後
 extension PushNotificationViewController: PushNotificationViewModelDelegate {
     func fetchDataSuccess() {
         apply()

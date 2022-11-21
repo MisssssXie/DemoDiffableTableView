@@ -15,9 +15,9 @@ class PushNotificationViewModel {
     /// [時間：[推播訊息]]
     private var notificationDic: [String: [NotificationInfo]] = [:]
     
-    private var fakeNotifications = [NotificationInfo(date: "2022/11/11", content: "裝置管理喔裝置管理喔裝置管理喔裝置管理喔裝置管理喔裝置管理喔裝置管理喔裝置管理喔裝置管理喔裝置管理喔裝置管理喔裝置管理喔裝置管理喔裝置管理喔裝置管理喔裝置管理喔裝置管理喔裝置管理喔裝置管理喔裝置管理喔裝置管理喔裝置管理喔裝置管理喔裝置管理喔裝置管理喔裝置管理喔"), NotificationInfo(date: "2022/11/12", content: "裝置管理喔"), NotificationInfo(date: "2022/11/13", content: "裝置管理喔裝置管理喔裝置管理喔裝置管理喔裝置管理喔裝置管理喔")]
+    private var fakeNotifications = [NotificationInfo(date: "2022/11/11", content: "我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦"), NotificationInfo(date: "2022/11/12", content: "我推播啦"), NotificationInfo(date: "2022/11/13", content: "我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦")]
     
-    private var willPushNotifications = [NotificationInfo(date: "2022/11/12", content: "裝置管理喔裝置管理喔裝置管理喔裝置管理喔裝置管理喔裝置管理喔裝置管理喔裝置管理喔裝置管理喔裝置管理喔"), NotificationInfo(date: "2022/11/14", content: "裝置管理喔裝置管理喔裝置管理喔裝置管理喔裝置管理喔裝置管理喔"), NotificationInfo(date: "2022/11/15", content: "裝置管理喔裝置管理喔裝置管理喔")]
+    private var willPushNotifications = [NotificationInfo(date: "2022/11/12", content: "我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦"), NotificationInfo(date: "2022/11/14", content: "我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦"), NotificationInfo(date: "2022/11/15", content: "我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦"), NotificationInfo(date: "2022/11/12", content: "我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦我推播啦")]
     
     weak var delegate: PushNotificationViewModelDelegate? = nil
     
