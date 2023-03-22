@@ -56,7 +56,7 @@ class PushNotificationViewController: UIViewController {
         self.tableView.dataSource = self.dataSource
     }
 
-    /// 使用快照apply新舊資料比對，取代reloadData
+    /// 使用快照apply自動差異更新，取代reloadData
     private func apply() {
         var snapshot = NSDiffableDataSourceSnapshot<String, NotificationInfo>()
 
