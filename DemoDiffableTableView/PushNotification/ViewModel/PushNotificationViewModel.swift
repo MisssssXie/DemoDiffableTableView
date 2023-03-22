@@ -30,8 +30,6 @@ class PushNotificationViewModel {
     private var willPushNotifications = NotificationInfo.willPushNotifications
     /// 全部亂序資料
     private var allShuffledArrayPushNotifications = NotificationInfo.allShuffledArrayPushNotifications
-    /// 全部排序過資料
-    private var allSortPushNotifications = NotificationInfo.allSortPushNotifications
     
     /// 預設排序大到小
     private var order: Order = .desc
