@@ -8,76 +8,91 @@
 import UIKit
 
 class PushNotificationViewController: UIViewController {
-    
     @IBOutlet weak var tableView: UITableView!
-    
+
     private lazy var viewModel: PushNotificationViewModel = {
         let vm = PushNotificationViewModel()
         vm.delegate = self
-        
+
         return vm
     }()
-    
+
     var dataSource: UITableViewDiffableDataSource<String, NotificationInfo>?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTableView()
-        setupDataSource()
-        
+        self.setupTableView()
+        self.setupDataSource()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.fetchData()
+        self.viewModel.fetchData()
     }
 
     private func setupTableView() {
-        tableView.delegate = self
-        tableView.bounces = true
-//        tableView.separatorStyle = .none
-//        tableView.separatorColor = .clear
-//        tableView.separatorInset = UIEdgeInsets.zero
-        
-        tableView.rowHeight = UITableView.automaticDimension
-        
+        self.tableView.delegate = self
+        // 不用這行了，使用UITableViewDiffableDataSource取代
+        // tableView.dataSource = self
+        self.tableView.bounces = true
+
+        self.tableView.rowHeight = UITableView.automaticDimension
+
         // 沒有資料的cell欄位隱藏分隔線
-        tableView.tableFooterView = UIView(frame: CGRect.zero)
+        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
 
-    /// 設定DataSource與Cell
+    /// 設定DataSource與Cell，取代cellForRowAt
     private func setupDataSource() {
-     
-        dataSource = UITableViewDiffableDataSource<String, NotificationInfo>(tableView: tableView, cellProvider: {(tableView, indexPath, model) -> UITableViewCell? in
+        self.dataSource = UITableViewDiffableDataSource<String, NotificationInfo>(tableView: self.tableView, cellProvider: { tableView, indexPath, model -> UITableViewCell? in
             let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationCell", for: indexPath) as! NotificationCell
-        
+
             cell.update(title: model.content)
             return cell
         })
-        
-        tableView.dataSource = dataSource
+
+        self.tableView.dataSource = self.dataSource
     }
-    
+
+    /// reloadData
     private func apply() {
         var snapshot = NSDiffableDataSourceSnapshot<String, NotificationInfo>()
-        
+
         // 設定快照內的section
-        snapshot.appendSections(self.viewModel.getSections())
-        self.viewModel.getSections().forEach { key in
-            guard let model = viewModel.getModels(at: key) else {return}
-            
+        let sections = self.viewModel.getSections()
+        snapshot.appendSections(sections)
+        sections.forEach { section in
+            guard let models = viewModel.getModels(at: section) else { return }
+
             // 設定每個section內的row
-            snapshot.appendItems(model, toSection: key)
+            snapshot.appendItems(models, toSection: section)
         }
+        // 新舊快照比對，取代reloadData
         self.dataSource?.apply(snapshot, animatingDifferences: true)
     }
-    
+
+    /// 點擊新增
+    /// - Parameter sender: UIButton
     @IBAction func didPressPushButton(_ sender: UIButton) {
-        viewModel.addNotification()
+        self.viewModel.addNotification()
+    }
+
+    /// 點擊刪除
+    /// - Parameter sender: UIButton
+    @IBAction func didPressDeleteButton(_ sender: Any) {
+        self.viewModel.removeNotification()
     }
     
-    @IBAction func didPressDeleteButton(_ sender: Any) {
-        viewModel.removeNotification()
+    /// 點擊寫入多筆
+    /// - Parameter sender: UIButton
+    @IBAction func didPressAllShuffledDataButton(_ sender: UIButton) {
+        self.viewModel.addAllShuffledModels()
+    }
+    
+    /// 點擊排序
+    /// - Parameter sender: UIButton
+    @IBAction func didPressSortedButton(_ sender: UIButton) {
+        self.viewModel.sortModels()
     }
 }
 
@@ -88,15 +103,14 @@ extension PushNotificationViewController: UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-
-        let sections = viewModel.getSections()
+        let sections = self.viewModel.getSections()
 
         guard sections.indices.contains(section) else { return nil }
 
         let sectionModel = sections[section]
 
         let label = UILabel()
-        
+
         label.text = sectionModel
         label.backgroundColor = .yellow
         return label
@@ -106,6 +120,6 @@ extension PushNotificationViewController: UITableViewDelegate {
 /// dataSource抓取成功後
 extension PushNotificationViewController: PushNotificationViewModelDelegate {
     func fetchDataSuccess() {
-        apply()
+        self.apply()
     }
 }
