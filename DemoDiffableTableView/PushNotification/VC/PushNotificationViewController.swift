@@ -16,7 +16,8 @@ class PushNotificationViewController: UIViewController {
 
         return vm
     }()
-
+    
+    /// 宣告UITableViewDiffableDataSource
     var dataSource: UITableViewDiffableDataSource<String, NotificationInfo>?
 
     override func viewDidLoad() {
@@ -32,7 +33,7 @@ class PushNotificationViewController: UIViewController {
 
     private func setupTableView() {
         self.tableView.delegate = self
-        // 不用這行了，使用UITableViewDiffableDataSource取代
+        // 使用UITableViewDiffableDataSource取代
         // tableView.dataSource = self
         self.tableView.bounces = true
 
@@ -42,9 +43,10 @@ class PushNotificationViewController: UIViewController {
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
 
-    /// 設定DataSource與Cell，取代cellForRowAt
+    /// 設定DataSource與Cell
     private func setupDataSource() {
         self.dataSource = UITableViewDiffableDataSource<String, NotificationInfo>(tableView: self.tableView, cellProvider: { tableView, indexPath, model -> UITableViewCell? in
+            // 取代cellForRowAt
             let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationCell", for: indexPath) as! NotificationCell
 
             cell.update(title: model.content)
@@ -54,7 +56,7 @@ class PushNotificationViewController: UIViewController {
         self.tableView.dataSource = self.dataSource
     }
 
-    /// reloadData
+    /// 使用快照apply新舊資料比對，取代reloadData
     private func apply() {
         var snapshot = NSDiffableDataSourceSnapshot<String, NotificationInfo>()
 
@@ -70,7 +72,10 @@ class PushNotificationViewController: UIViewController {
         // 新舊快照比對，取代reloadData
         self.dataSource?.apply(snapshot, animatingDifferences: true)
     }
+}
 
+// MARK: - Action
+extension PushNotificationViewController {
     /// 點擊新增
     /// - Parameter sender: UIButton
     @IBAction func didPressPushButton(_ sender: UIButton) {
@@ -117,7 +122,7 @@ extension PushNotificationViewController: UITableViewDelegate {
     }
 }
 
-/// dataSource抓取成功後
+// MARK: - PushNotificationViewModelDelegate
 extension PushNotificationViewController: PushNotificationViewModelDelegate {
     func fetchDataSuccess() {
         self.apply()
