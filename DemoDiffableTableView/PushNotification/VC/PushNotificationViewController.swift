@@ -52,7 +52,8 @@ class PushNotificationViewController: UIViewController {
             cell.update(title: model.content)
             return cell
         })
-
+        // 更變動畫
+        self.dataSource?.defaultRowAnimation = .bottom
         self.tableView.dataSource = self.dataSource
     }
 
