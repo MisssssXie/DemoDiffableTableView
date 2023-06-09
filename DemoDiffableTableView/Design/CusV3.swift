@@ -11,3 +11,7 @@ import UIKit
 class CusV3: UIView {
     
 }
+
+#Preview {
+    return CusV3()
+}

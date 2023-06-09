@@ -72,6 +72,8 @@
 		361A3160292A040B003B7ED8 /* DemoDiffableTableView */ = {
 			isa = PBXGroup;
 			children = (
+				362949872A1F3941008A5765 /* Base */,
+				362949862A1F3934008A5765 /* Design */,
 				361A3175292A077C003B7ED8 /* PushNotification */,
 				361A3161292A040B003B7ED8 /* AppDelegate.swift */,
 				361A3163292A040B003B7ED8 /* SceneDelegate.swift */,
@@ -79,11 +81,6 @@
 				361A316A292A040C003B7ED8 /* Assets.xcassets */,
 				361A316C292A040C003B7ED8 /* LaunchScreen.storyboard */,
 				361A316F292A040C003B7ED8 /* Info.plist */,
-				3662BFB42A1DD8190099E928 /* CustomView.swift */,
-				3662BFB82A1DD9CD0099E928 /* CusV2.swift */,
-				3662BFBA2A1DD9D90099E928 /* CusV2.xib */,
-				36CE1C072A1DDE880019E110 /* CusV3.swift */,
-				36CE1C092A1DDE8F0019E110 /* CusV3.xib */,
 			);
 			path = DemoDiffableTableView;
 			sourceTree = "<group>";
@@ -129,6 +126,25 @@
 				361A317E292A0AC2003B7ED8 /* NotificationCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		362949862A1F3934008A5765 /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				3662BFB82A1DD9CD0099E928 /* CusV2.swift */,
+				3662BFBA2A1DD9D90099E928 /* CusV2.xib */,
+				36CE1C072A1DDE880019E110 /* CusV3.swift */,
+				36CE1C092A1DDE8F0019E110 /* CusV3.xib */,
+			);
+			path = Design;
+			sourceTree = "<group>";
+		};
+		362949872A1F3941008A5765 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				3662BFB42A1DD8190099E928 /* CustomView.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,7 +305,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -344,7 +360,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -361,7 +377,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7R6QZ5VVGR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DemoDiffableTableView/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -389,7 +405,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7R6QZ5VVGR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DemoDiffableTableView/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

@@ -28,3 +28,9 @@ class NotificationCell: UITableViewCell {
     }
 
 }
+
+#Preview {
+    let cell = NotificationCell()
+    cell.update(title: "hahahah")
+    return cell
+}

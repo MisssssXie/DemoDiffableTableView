@@ -22,8 +22,8 @@ class PushNotificationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupTableView()
         self.setupDataSource()
+        self.setupTableView()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -128,4 +128,9 @@ extension PushNotificationViewController: PushNotificationViewModelDelegate {
     func fetchDataSuccess() {
         self.apply()
     }
+}
+
+#Preview {
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    return storyboard.instantiateViewController(withIdentifier: "PushNotificationViewController")
 }
